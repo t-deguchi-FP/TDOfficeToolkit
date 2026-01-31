@@ -15,7 +15,7 @@
     <!-- メニューバー -->
     <Menu DockPanel.Dock="Top" VerticalAlignment="Top">
       <MenuItem Header="ツール一覧">
-        <MenuItem Header="Knighthead 申込書作成" Command="{Binding OpenKnightheadCommand}"/>
+        <MenuItem Header="申込書作成" Command="{Binding OpenKnightheadCommand}"/>
         <MenuItem Header="確認書作成" Command="{Binding OpenConfirmationCommand}"/>
         <Separator/>
         <MenuItem Header="_Exit" Command="{Binding ExitCommand}"/>
@@ -54,7 +54,7 @@
           <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
             <Image Source="../Resources/Knighthead.jpg" Width="130" Height="130" Margin="0,0,25,0"/>
             <StackPanel VerticalAlignment="Center">
-              <TextBlock Text="Knighthead 申込書作成" 
+              <TextBlock Text="申込書作成" 
                          FontSize="20" 
                          FontWeight="SemiBold"/>
               <TextBlock Text="申請書、デューデリジェンス、その他証明書を作成します。" 

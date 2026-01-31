@@ -26,6 +26,6 @@ internal class MainViewModel : NotificationObject
   private void OpenConfirmationTool()
   {
     // TODO: 確認書作成用のウィンドウまたはビューを表示
-    MessageBox.Show("確認書作成を開きます", "情報", MessageBoxButton.OK, MessageBoxImage.Information);
+    MessageBox.Show("Coming Soon...", "情報", MessageBoxButton.OK, MessageBoxImage.Information);
   }
 }

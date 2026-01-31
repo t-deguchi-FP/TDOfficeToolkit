@@ -41,25 +41,28 @@
                     <GradientStop Color="#764ba2" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
-            <Border.Effect>
-                <DropShadowEffect Color="#40000000" BlurRadius="20" 
+      <Border.Effect>
+        <DropShadowEffect Color="#40000000" BlurRadius="20" 
                                 ShadowDepth="5" Direction="270"/>
-            </Border.Effect>
-            
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+      </Border.Effect>
+
+      <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <!-- アプリケーションアイコン -->
-                <Ellipse Width="60" Height="60" Margin="0,0,0,10">
-                    <Ellipse.Fill>
-                        <RadialGradientBrush>
-                            <GradientStop Color="White" Offset="0"/>
-                            <GradientStop Color="#F0F0F0" Offset="1"/>
-                        </RadialGradientBrush>
-                    </Ellipse.Fill>
-                    <Ellipse.Effect>
+                <Border Width="60" Height="60" 
+                       CornerRadius="30" 
+                       Margin="0,0,0,10"
+                       BorderThickness="2"
+                       BorderBrush="White">
+                    <Border.Effect>
                         <DropShadowEffect Color="#60000000" BlurRadius="15" 
                                         ShadowDepth="3" Direction="270"/>
-                    </Ellipse.Effect>
-                </Ellipse>
+                    </Border.Effect>
+                    <Border.Clip>
+                        <EllipseGeometry Center="30,30" RadiusX="30" RadiusY="30"/>
+                    </Border.Clip>
+                    <Image Source="../Resources/TDIcon.png" 
+                          Stretch="UniformToFill"/>
+                </Border>
                 
                 <!-- アプリケーション名 -->
                 <TextBlock Text="{Binding ApplicationName, FallbackValue='TDOfficeToolkit'}"
