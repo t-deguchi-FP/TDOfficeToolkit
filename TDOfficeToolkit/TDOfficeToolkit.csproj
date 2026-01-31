@@ -13,5 +13,7 @@
       <HintPath>..\..\..\YKToolkit\YKToolkit.Controls.dll</HintPath>
     </Reference>
   </ItemGroup>
-
+  <ItemGroup>
+    <Resource Include="Resources\**\*" />
+  </ItemGroup>
 </Project>

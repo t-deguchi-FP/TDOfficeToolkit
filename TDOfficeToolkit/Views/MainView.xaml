@@ -6,9 +6,10 @@
            xmlns:local="clr-namespace:TDOfficeToolkit.Views"
            xmlns:YK="clr-namespace:YKToolkit.Controls;assembly=YKToolkit.Controls"
            mc:Ignorable="d"
-           Title="TDOfficeToolkit" Height="300" Width="450"
+           Title="TDOfficeToolkit" Height="600" Width="750"
            IsClosingConfirmationEnabled="False"
-           WindowStartupLocation="CenterScreen">
+           WindowStartupLocation="CenterScreen"
+           ResizeMode="NoResize">
 
   <DockPanel>
     <!-- メニューバー -->
@@ -26,35 +27,70 @@
 
     <!-- メインコンテンツエリア -->
     <Grid DockPanel.Dock="Bottom">
+      <!-- ヘッダーエリア（画像またはアイコン付き） -->
+      <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20,0,0">
+        <TextBlock Text="TDOfficeToolkit" 
+                   FontSize="28" 
+                   FontWeight="Bold" 
+                   HorizontalAlignment="Center"/>
+        <TextBlock Text="ツールを選択してください" 
+                   FontSize="12" 
+                   HorizontalAlignment="Center"
+                   Margin="0,5,0,0"/>
+      </StackPanel>
+
       <!-- メインツールボタン（中央） -->
       <StackPanel Orientation="Vertical" 
                   HorizontalAlignment="Center" 
-                  VerticalAlignment="Center">
+                  VerticalAlignment="Center"
+                  Margin="0,40,0,0">
 
-        <Button Content="Knighthead 申込書作成" 
-                Command="{Binding OpenKnightheadCommand}"
-                Width="250" 
-                Height="50" 
-                FontSize="14"
-                Margin="5"/>
+        <!-- Knightheadボタン（アイコン付き） -->
+        <Button Command="{Binding OpenKnightheadCommand}"
+                Width="500" 
+                Height="100"
+                Margin="5">
+          <StackPanel Orientation="Horizontal">
+            <Image Source="../Resources/Knighthead.jpg" Width="80" Height="80" Margin="0,0,20,0"/>
+            <StackPanel VerticalAlignment="Center">
+              <TextBlock Text="Knighthead 申込書作成" 
+                         FontSize="18" 
+                         FontWeight="SemiBold"/>
+              <TextBlock Text="申請書、デューデリジェンス、その他証明書を作成します。" 
+                         FontSize="11" 
+                         Margin="0,3,0,0"/>
+            </StackPanel>
+          </StackPanel>
+        </Button>
 
-        <Button Content="確認書作成" 
-                Command="{Binding OpenConfirmationCommand}"
-                Width="250" 
-                Height="50" 
-                FontSize="14"
-                Margin="5"/>
+        <!-- 確認書作成ボタン（アイコン付き） -->
+        <Button Command="{Binding OpenConfirmationCommand}"
+                Width="500" 
+                Height="100"
+                Margin="5">
+          <StackPanel Orientation="Horizontal">
+            <Image Source="../Resources/SP500.png" Width="80" Height="80" Margin="0,0,20,0"/>
+            <StackPanel VerticalAlignment="Center">
+              <TextBlock Text="確認書作成" 
+                         FontSize="18" 
+                         FontWeight="SemiBold"/>
+              <TextBlock Text="各保険会社、各商品の確認書を作成します。" 
+                         FontSize="11" 
+                         Margin="0,3,0,0"/>
+            </StackPanel>
+          </StackPanel>
+        </Button>
       </StackPanel>
 
       <!-- バージョン情報ボタン（右下に特別配置） -->
       <Button Content="ℹ️ バージョン情報" 
               Command="{Binding ShowVersionCommand}"
-              Width="130" 
-              Height="35" 
-              FontSize="11"
+              Width="160" 
+              Height="45" 
+              FontSize="13"
               HorizontalAlignment="Right"
               VerticalAlignment="Bottom"
-              Margin="5"
+              Margin="10"
               ToolTip="アプリケーションのバージョン情報を表示します"/>
     </Grid>
   </DockPanel>
