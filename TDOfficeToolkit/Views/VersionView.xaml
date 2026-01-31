@@ -26,7 +26,7 @@
         </EventTrigger>
     </Window.Triggers>
 
-    <Grid x:Name="MainGrid" Background="#F5F7FA">
+    <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="150"/>
             <RowDefinition Height="*"/>
