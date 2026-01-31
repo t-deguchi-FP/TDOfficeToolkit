@@ -1,12 +1,15 @@
 ﻿<YK:Window x:Class="TDOfficeToolkit.Views.MainView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TDOfficeToolkit.Views"
-        xmlns:YK="clr-namespace:YKToolkit.Controls;assembly=YKToolkit.Controls"
-        mc:Ignorable="d"
-        Title="MainView" Height="450" Width="800">
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+           xmlns:local="clr-namespace:TDOfficeToolkit.Views"
+           xmlns:YK="clr-namespace:YKToolkit.Controls;assembly=YKToolkit.Controls"
+           mc:Ignorable="d"
+           Title="TDOfficeToolkit" Height="860" Width="1280"
+           IsClosingConfirmationEnabled="False"
+           WindowStartupLocation="CenterScreen">
+
   <Menu VerticalAlignment="Top">
     <MenuItem Header="ツール一覧">
       <MenuItem Header="Knighthead 申込書作成" />
