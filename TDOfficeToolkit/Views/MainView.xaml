@@ -6,19 +6,56 @@
            xmlns:local="clr-namespace:TDOfficeToolkit.Views"
            xmlns:YK="clr-namespace:YKToolkit.Controls;assembly=YKToolkit.Controls"
            mc:Ignorable="d"
-           Title="TDOfficeToolkit" Height="860" Width="1280"
+           Title="TDOfficeToolkit" Height="300" Width="450"
            IsClosingConfirmationEnabled="False"
            WindowStartupLocation="CenterScreen">
 
-  <Menu VerticalAlignment="Top">
-    <MenuItem Header="ツール一覧">
-      <MenuItem Header="Knighthead 申込書作成" />
-      <MenuItem Header="確認書作成" />
-      <Separator/>
-      <MenuItem Header="_Exit"/>
-    </MenuItem>
-    <MenuItem Header="ヘルプ">
-      <MenuItem Header="バージョン情報" Command="{Binding ShowVersionCommand}"/>
-    </MenuItem>
-  </Menu>
+  <DockPanel>
+    <!-- メニューバー -->
+    <Menu DockPanel.Dock="Top" VerticalAlignment="Top">
+      <MenuItem Header="ツール一覧">
+        <MenuItem Header="Knighthead 申込書作成" Command="{Binding OpenKnightheadCommand}"/>
+        <MenuItem Header="確認書作成" Command="{Binding OpenConfirmationCommand}"/>
+        <Separator/>
+        <MenuItem Header="_Exit" Command="{Binding ExitCommand}"/>
+      </MenuItem>
+      <MenuItem Header="ヘルプ">
+        <MenuItem Header="バージョン情報" Command="{Binding ShowVersionCommand}"/>
+      </MenuItem>
+    </Menu>
+
+    <!-- メインコンテンツエリア -->
+    <Grid DockPanel.Dock="Bottom">
+      <!-- メインツールボタン（中央） -->
+      <StackPanel Orientation="Vertical" 
+                  HorizontalAlignment="Center" 
+                  VerticalAlignment="Center">
+
+        <Button Content="Knighthead 申込書作成" 
+                Command="{Binding OpenKnightheadCommand}"
+                Width="250" 
+                Height="50" 
+                FontSize="14"
+                Margin="5"/>
+
+        <Button Content="確認書作成" 
+                Command="{Binding OpenConfirmationCommand}"
+                Width="250" 
+                Height="50" 
+                FontSize="14"
+                Margin="5"/>
+      </StackPanel>
+
+      <!-- バージョン情報ボタン（右下に特別配置） -->
+      <Button Content="ℹ️ バージョン情報" 
+              Command="{Binding ShowVersionCommand}"
+              Width="130" 
+              Height="35" 
+              FontSize="11"
+              HorizontalAlignment="Right"
+              VerticalAlignment="Bottom"
+              Margin="5"
+              ToolTip="アプリケーションのバージョン情報を表示します"/>
+    </Grid>
+  </DockPanel>
 </YK:Window>
