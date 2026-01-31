@@ -5,12 +5,72 @@
            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
            xmlns:local="clr-namespace:TDOfficeToolkit.Views"
            xmlns:YK="clr-namespace:YKToolkit.Controls;assembly=YKToolkit.Controls"
+           xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
            mc:Ignorable="d"
-           Title="Knighthead 申込書作成" Height="450" Width="800"
+           Title="Knighthead 申込書作成" Height="820" Width="1450"
            IsClosingConfirmationEnabled="False"
            WindowStartupLocation="CenterScreen"
-           ResizeMode="NoResize">
+           ResizeMode="CanResize">
   <Grid>
-        
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*"/>
+      <ColumnDefinition Width="5"/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+
+    <!-- 左側: 作業エリア -->
+    <Grid Grid.Column="0" Background="#F5F5F5">
+      <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <TextBlock Text="作業エリア" 
+                   FontSize="24" 
+                   FontWeight="Bold"
+                   Foreground="#999"/>
+        <TextBlock Text="ここにフォームなどを配置します" 
+                   FontSize="14" 
+                   Foreground="#999"
+                   Margin="0,10,0,0"/>
+      </StackPanel>
     </Grid>
+
+    <!-- 分割線 -->
+    <GridSplitter Grid.Column="1" 
+                  Width="5"
+                  HorizontalAlignment="Stretch"
+                  Background="#DDDDDD"
+                  ResizeBehavior="PreviousAndNext"/>
+
+    <!-- 右側: PDFビューアー -->
+    <Grid Grid.Column="2">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+
+      <!-- PDFコントロールバー -->
+      <Border Grid.Row="0" 
+              Background="#2C2C2C" 
+              Padding="10">
+        <StackPanel Orientation="Horizontal">
+          <TextBlock Text="📄 PDFプレビュー" 
+                     Foreground="White" 
+                     FontSize="14"
+                     VerticalAlignment="Center"
+                     Margin="0,0,20,0"/>
+          <Button Content="PDFを開く" 
+                  Command="{Binding OpenPdfCommand}"
+                  Padding="10,5"
+                  Margin="0,0,10,0"/>
+          <TextBlock Text="{Binding CurrentPdfPath, StringFormat='ファイル: {0}'}" 
+                     Foreground="White" 
+                     VerticalAlignment="Center"
+                     Margin="10,0,0,0"/>
+        </StackPanel>
+      </Border>
+
+      <!-- WebView2 PDFビューアー -->
+      <wv2:WebView2 Grid.Row="1" 
+                    x:Name="PdfWebView"
+                    Source="{Binding PdfSource}"/>
+    </Grid>
+  </Grid>
 </YK:Window>
