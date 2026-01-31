@@ -6,7 +6,7 @@
            xmlns:local="clr-namespace:TDOfficeToolkit.Views"
            xmlns:YK="clr-namespace:YKToolkit.Controls;assembly=YKToolkit.Controls"
            mc:Ignorable="d"
-           Title="TDOfficeToolkit" Height="600" Width="750"
+           Title="TDOfficeToolkit" Height="700" Width="850"
            IsClosingConfirmationEnabled="False"
            WindowStartupLocation="CenterScreen"
            ResizeMode="NoResize">
@@ -47,36 +47,38 @@
 
         <!-- Knightheadボタン（アイコン付き） -->
         <Button Command="{Binding OpenKnightheadCommand}"
-                Width="500" 
-                Height="100"
-                Margin="5">
-          <StackPanel Orientation="Horizontal">
-            <Image Source="../Resources/Knighthead.jpg" Width="80" Height="80" Margin="0,0,20,0"/>
+                Width="600" 
+                Height="150"
+                Margin="5"
+                HorizontalContentAlignment="Left">
+          <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+            <Image Source="../Resources/Knighthead.jpg" Width="130" Height="130" Margin="0,0,25,0"/>
             <StackPanel VerticalAlignment="Center">
               <TextBlock Text="Knighthead 申込書作成" 
-                         FontSize="18" 
+                         FontSize="20" 
                          FontWeight="SemiBold"/>
               <TextBlock Text="申請書、デューデリジェンス、その他証明書を作成します。" 
-                         FontSize="11" 
-                         Margin="0,3,0,0"/>
+                         FontSize="12" 
+                         Margin="0,5,0,0"/>
             </StackPanel>
           </StackPanel>
         </Button>
 
         <!-- 確認書作成ボタン（アイコン付き） -->
         <Button Command="{Binding OpenConfirmationCommand}"
-                Width="500" 
-                Height="100"
-                Margin="5">
-          <StackPanel Orientation="Horizontal">
-            <Image Source="../Resources/SP500.png" Width="80" Height="80" Margin="0,0,20,0"/>
+                Width="600" 
+                Height="150"
+                Margin="5"
+                HorizontalContentAlignment="Left">
+          <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+            <Image Source="../Resources/SP500.png" Width="130" Height="130" Margin="0,0,25,0"/>
             <StackPanel VerticalAlignment="Center">
               <TextBlock Text="確認書作成" 
-                         FontSize="18" 
+                         FontSize="20" 
                          FontWeight="SemiBold"/>
               <TextBlock Text="各保険会社、各商品の確認書を作成します。" 
-                         FontSize="11" 
-                         Margin="0,3,0,0"/>
+                         FontSize="12" 
+                         Margin="0,5,0,0"/>
             </StackPanel>
           </StackPanel>
         </Button>
