@@ -7,7 +7,7 @@
            xmlns:local="clr-namespace:TDOfficeToolkit.Views"
            mc:Ignorable="d"
            Title="バージョン情報" 
-           Height="550" 
+           Height="600" 
            Width="450"
            IsClosingConfirmationEnabled="False"
            WindowStartupLocation="CenterScreen"
@@ -162,7 +162,7 @@
                     </Grid>
 
                     <!-- 制作者 -->
-                    <Grid>
+                    <Grid Margin="0,0,0,15">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
@@ -194,6 +194,52 @@
                                       Foreground="#333333"/>
                         </StackPanel>
                     </Grid>
+
+                    <!-- Instagram -->
+                    <Button Command="{Binding OpenInstagramCommand}"
+                           Cursor="Hand"
+                           Background="Transparent"
+                           BorderThickness="0"
+                           Padding="0"
+                           HorizontalAlignment="Stretch"
+                           HorizontalContentAlignment="Stretch">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <Border Grid.Column="0" 
+                                   Width="40" Height="40" 
+                                   CornerRadius="10" Margin="0,0,15,0"
+                                   VerticalAlignment="Center">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#f09433" Offset="0"/>
+                                        <GradientStop Color="#e6683c" Offset="0.25"/>
+                                        <GradientStop Color="#dc2743" Offset="0.5"/>
+                                        <GradientStop Color="#cc2366" Offset="0.75"/>
+                                        <GradientStop Color="#bc1888" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <TextBlock Text="📷" FontSize="20" 
+                                          HorizontalAlignment="Center" 
+                                          VerticalAlignment="Center"/>
+                            </Border>
+                            
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <TextBlock Text="Instagram" 
+                                          FontSize="12" 
+                                          Foreground="#999999"
+                                          Margin="0,0,0,3"/>
+                                <TextBlock Text="@teruhiko.deguchi" 
+                                          FontSize="14" 
+                                          FontWeight="SemiBold"
+                                          Foreground="#333333"
+                                          TextDecorations="Underline"/>
+                            </StackPanel>
+                        </Grid>
+                    </Button>
                 </StackPanel>
             </Border>
         </StackPanel>
