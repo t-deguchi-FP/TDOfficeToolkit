@@ -7,21 +7,15 @@
         xmlns:YK="clr-namespace:YKToolkit.Controls;assembly=YKToolkit.Controls"
         mc:Ignorable="d"
         Title="MainView" Height="450" Width="800">
-  <Grid>
-    <Menu VerticalAlignment="Top">
-      <MenuItem Header="_File">
-        <MenuItem Header="_New"/>
-        <MenuItem Header="_Open"/>
-        <Separator/>
-        <MenuItem Header="_Exit"/>
-      </MenuItem>
-      <MenuItem Header="_Edit">
-        <MenuItem Header="_Undo"/>
-        <MenuItem Header="_Redo"/>
-      </MenuItem>
-      <MenuItem Header="_Help">
-        <MenuItem Header="_About"/>
-      </MenuItem>
-    </Menu>
-  </Grid>
+  <Menu VerticalAlignment="Top">
+    <MenuItem Header="ツール一覧">
+      <MenuItem Header="Knighthead 申込書作成" />
+      <MenuItem Header="確認書作成" />
+      <Separator/>
+      <MenuItem Header="_Exit"/>
+    </MenuItem>
+    <MenuItem Header="ヘルプ">
+      <MenuItem Header="バージョン情報"/>
+    </MenuItem>
+  </Menu>
 </YK:Window>
