@@ -6,21 +6,20 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace TDOfficeToolkit.Models;
+namespace TDOfficeToolkit.Services;
 
 /// <summary>
-/// PDF フォームフィールドの読み取り・編集を行うクラス
+/// PDFフォームフィールドの読み取り・編集を行うサービス
 /// </summary>
-public class PdfFieldEditor : IDisposable
+public class PdfFieldEditorService : IDisposable
 {
   private PdfDocument? _pdfDocument;
   private PdfAcroForm? _form;
   private string? _currentFilePath;
 
   /// <summary>
-  /// PDF ファイルを開く
+  /// PDFファイルを開く
   /// </summary>
-  /// <param name="filePath">開く PDF ファイルのパス</param>
   public void OpenPdf(string filePath)
   {
     ClosePdf();
@@ -33,16 +32,14 @@ public class PdfFieldEditor : IDisposable
   }
 
   /// <summary>
-  /// PDF をファイルに保存
+  /// PDFをファイルに保存
   /// </summary>
-  /// <param name="outputPath">保存先のファイルパス</param>
-  /// <exception cref="InvalidOperationException">PDF が開かれていない場合</exception>
   public void SavePdf(string outputPath)
   {
     if (_pdfDocument == null || _form == null)
-      throw new InvalidOperationException("PDF が開かれていません");
+      throw new InvalidOperationException("PDFが開かれていません");
 
-    // 新しい PDF ドキュメントを作成して保存
+    // 新しいPDFドキュメントを作成して保存
     using var reader = new PdfReader(_currentFilePath!);
     using var writer = new PdfWriter(outputPath);
     using var pdfDoc = new PdfDocument(reader, writer);
@@ -64,12 +61,10 @@ public class PdfFieldEditor : IDisposable
   /// <summary>
   /// すべてのフィールド名と値を取得
   /// </summary>
-  /// <returns>フィールド名と値の辞書</returns>
-  /// <exception cref="InvalidOperationException">PDF が開かれていない場合</exception>
   public Dictionary<string, string> GetAllFields()
   {
     if (_form == null)
-      throw new InvalidOperationException("PDF が開かれていません");
+      throw new InvalidOperationException("PDFが開かれていません");
 
     var fields = new Dictionary<string, string>();
     var fieldNames = _form.GetAllFormFields();
@@ -88,13 +83,10 @@ public class PdfFieldEditor : IDisposable
   /// <summary>
   /// 特定のフィールドの値を取得
   /// </summary>
-  /// <param name="fieldName">フィールド名</param>
-  /// <returns>フィールドの値（存在しない場合は null）</returns>
-  /// <exception cref="InvalidOperationException">PDF が開かれていない場合</exception>
   public string? GetFieldValue(string fieldName)
   {
     if (_form == null)
-      throw new InvalidOperationException("PDF が開かれていません");
+      throw new InvalidOperationException("PDFが開かれていません");
 
     var field = _form.GetField(fieldName);
     return field?.GetValueAsString();
@@ -103,14 +95,10 @@ public class PdfFieldEditor : IDisposable
   /// <summary>
   /// 特定のフィールドに値を設定
   /// </summary>
-  /// <param name="fieldName">フィールド名</param>
-  /// <param name="value">設定する値</param>
-  /// <exception cref="InvalidOperationException">PDF が開かれていない場合</exception>
-  /// <exception cref="ArgumentException">フィールドが存在しない場合</exception>
   public void SetFieldValue(string fieldName, string value)
   {
     if (_form == null)
-      throw new InvalidOperationException("PDF が開かれていません");
+      throw new InvalidOperationException("PDFが開かれていません");
 
     var field = _form.GetField(fieldName);
     if (field != null)
@@ -126,7 +114,6 @@ public class PdfFieldEditor : IDisposable
   /// <summary>
   /// 複数のフィールドに値を一括設定
   /// </summary>
-  /// <param name="fieldValues">フィールド名と値の辞書</param>
   public void SetFieldValues(Dictionary<string, string> fieldValues)
   {
     foreach (var kvp in fieldValues)
@@ -146,19 +133,16 @@ public class PdfFieldEditor : IDisposable
   /// <summary>
   /// フィールドが存在するかチェック
   /// </summary>
-  /// <param name="fieldName">チェックするフィールド名</param>
-  /// <returns>フィールドが存在する場合は true、それ以外は false</returns>
-  /// <exception cref="InvalidOperationException">PDF が開かれていない場合</exception>
   public bool FieldExists(string fieldName)
   {
     if (_form == null)
-      throw new InvalidOperationException("PDF が開かれていません");
+      throw new InvalidOperationException("PDFが開かれていません");
 
     return _form.GetField(fieldName) != null;
   }
 
   /// <summary>
-  /// PDF を閉じる
+  /// PDFを閉じる
   /// </summary>
   public void ClosePdf()
   {
@@ -168,9 +152,6 @@ public class PdfFieldEditor : IDisposable
     _currentFilePath = null;
   }
 
-  /// <summary>
-  /// リソースを解放
-  /// </summary>
   public void Dispose()
   {
     ClosePdf();

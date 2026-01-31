@@ -1,7 +1,7 @@
 namespace TDOfficeToolkit.Models;
 
 /// <summary>
-/// PDFフィールドの情報を保持するモデル
+/// PDF フィールドの情報を保持するモデル
 /// </summary>
 public class PdfFieldInfo
 {

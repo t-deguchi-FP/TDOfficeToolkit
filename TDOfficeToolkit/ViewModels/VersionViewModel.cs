@@ -15,33 +15,55 @@ namespace TDOfficeToolkit.ViewModels
       _closeAction = closeAction;
     }
 
-    // アプリケーション名
+    /// <summary>
+    /// アプリケーション名
+    /// </summary>
     public string ApplicationName => "TDOfficeToolkit";
 
-    // バージョン情報
+    /// <summary>
+    /// バージョン情報
+    /// </summary>
     public string Version => System.Reflection.Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "1.0.0.0";
 
-    // コピーライト情報
+    /// <summary>
+    /// コピーライト情報
+    /// </summary>
     public string Copyright => $"© {DateTime.Now.Year} TDOfficeToolkit";
 
-    // 制作者
+    /// <summary>
+    /// 制作者
+    /// </summary>
     public string Developer => "T.Deguchi";
 
-    // Instagram URL
+    /// <summary>
+    /// Instagram URL
+    /// </summary>
     public string InstagramUrl => "https://www.instagram.com/teruhiko.deguchi/";
 
-    // GitHub URL
+    /// <summary>
+    /// GitHub URL
+    /// </summary>
     public string GitHubUrl => "https://github.com/t-deguchi-FP/TDOfficeToolkit";
 
-    // 閉じるコマンド
+    /// <summary>
+    /// 閉じるコマンド
+    /// </summary>
     public DelegateCommand CloseCommand => new DelegateCommand(_ => _closeAction?.Invoke());
 
-    // Instagramを開くコマンド
+    /// <summary>
+    /// Instagram を開くコマンド
+    /// </summary>
     public DelegateCommand OpenInstagramCommand => new DelegateCommand(_ => OpenUrl(InstagramUrl));
 
-    // GitHubを開くコマンド
+    /// <summary>
+    /// GitHub を開くコマンド
+    /// </summary>
     public DelegateCommand OpenGitHubCommand => new DelegateCommand(_ => OpenUrl(GitHubUrl));
 
+    /// <summary>
+    /// 指定された URL をブラウザで開く
+    /// </summary>
+    /// <param name="url">開く URL</param>
     private void OpenUrl(string url)
     {
       try
@@ -55,7 +77,7 @@ namespace TDOfficeToolkit.ViewModels
       catch (Exception ex)
       {
         // エラーハンドリング（必要に応じて）
-        System.Diagnostics.Debug.WriteLine($"URLを開けませんでした: {ex.Message}");
+        System.Diagnostics.Debug.WriteLine($"URL を開けませんでした: {ex.Message}");
       }
     }
   }

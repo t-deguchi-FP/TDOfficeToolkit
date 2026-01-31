@@ -7,6 +7,9 @@ using YKToolkit.Bindings;
 
 namespace TDOfficeToolkit.ViewModels;
 
+/// <summary>
+/// Knighthead 申込書作成画面の ViewModel
+/// </summary>
 public class KnightheadViewModel : NotificationObject, IDisposable
 {
   private readonly PdfFieldEditor _pdfEditor;
@@ -14,7 +17,7 @@ public class KnightheadViewModel : NotificationObject, IDisposable
   private Uri? _pdfSource;
 
   /// <summary>
-  /// 現在開いているPDFファイルのパス
+  /// 現在開いている PDF ファイルのパス
   /// </summary>
   public string? CurrentPdfPath
   {
@@ -23,7 +26,7 @@ public class KnightheadViewModel : NotificationObject, IDisposable
   }
 
   /// <summary>
-  /// WebView2に表示するPDFのソース
+  /// WebView2 に表示する PDF のソース
   /// </summary>
   public Uri? PdfSource
   {
@@ -32,34 +35,37 @@ public class KnightheadViewModel : NotificationObject, IDisposable
   }
 
   /// <summary>
-  /// PDFフィールドのコレクション
+  /// PDF フィールドのコレクション
   /// </summary>
   public ObservableCollection<PdfFieldInfo> PdfFields { get; } = new();
 
   /// <summary>
-  /// PDFを開くコマンド
+  /// PDF を開くコマンド
   /// </summary>
   public DelegateCommand OpenPdfCommand => new DelegateCommand(_ => OpenPdf());
 
   /// <summary>
-  /// PDFを保存するコマンド
+  /// PDF を保存するコマンド
   /// </summary>
   public DelegateCommand SavePdfCommand => new DelegateCommand(_ => SavePdf());
 
+  /// <summary>
+  /// コンストラクタ
+  /// </summary>
   public KnightheadViewModel()
   {
     _pdfEditor = new PdfFieldEditor();
   }
 
   /// <summary>
-  /// PDFファイルを開くダイアログを表示
+  /// PDF ファイルを開くダイアログを表示
   /// </summary>
   private void OpenPdf()
   {
     var dialog = new OpenFileDialog
     {
-      Filter = "PDFファイル (*.pdf)|*.pdf|すべてのファイル (*.*)|*.*",
-      Title = "PDFファイルを選択"
+      Filter = "PDF ファイル (*.pdf)|*.pdf|すべてのファイル (*.*)|*.*",
+      Title = "PDF ファイルを選択"
     };
 
     if (dialog.ShowDialog() == true)
@@ -69,15 +75,16 @@ public class KnightheadViewModel : NotificationObject, IDisposable
   }
 
   /// <summary>
-  /// 指定されたPDFファイルを読み込む
+  /// 指定された PDF ファイルを読み込む
   /// </summary>
+  /// <param name="filePath">PDF ファイルのパス</param>
   private void LoadPdf(string filePath)
   {
     if (File.Exists(filePath))
     {
       try
       {
-        // PDFをエディタで開く
+        // PDF をエディタで開く
         _pdfEditor.OpenPdf(filePath);
 
         // フィールド情報を取得
@@ -100,7 +107,7 @@ public class KnightheadViewModel : NotificationObject, IDisposable
       catch (Exception ex)
       {
         System.Windows.MessageBox.Show(
-          $"PDFの読み込みに失敗しました: {ex.Message}",
+          $"PDF の読み込みに失敗しました: {ex.Message}",
           "エラー",
           System.Windows.MessageBoxButton.OK,
           System.Windows.MessageBoxImage.Error);
@@ -109,14 +116,14 @@ public class KnightheadViewModel : NotificationObject, IDisposable
   }
 
   /// <summary>
-  /// PDFを保存
+  /// PDF を保存
   /// </summary>
   private void SavePdf()
   {
     var dialog = new SaveFileDialog
     {
-      Filter = "PDFファイル (*.pdf)|*.pdf",
-      Title = "PDFファイルを保存",
+      Filter = "PDF ファイル (*.pdf)|*.pdf",
+      Title = "PDF ファイルを保存",
       FileName = CurrentPdfPath ?? "output.pdf"
     };
 
@@ -136,7 +143,7 @@ public class KnightheadViewModel : NotificationObject, IDisposable
         _pdfEditor.SavePdf(dialog.FileName);
 
         System.Windows.MessageBox.Show(
-          "PDFを保存しました",
+          "PDF を保存しました",
           "成功",
           System.Windows.MessageBoxButton.OK,
           System.Windows.MessageBoxImage.Information);
@@ -144,7 +151,7 @@ public class KnightheadViewModel : NotificationObject, IDisposable
       catch (Exception ex)
       {
         System.Windows.MessageBox.Show(
-          $"PDFの保存に失敗しました: {ex.Message}",
+          $"PDF の保存に失敗しました: {ex.Message}",
           "エラー",
           System.Windows.MessageBoxButton.OK,
           System.Windows.MessageBoxImage.Error);
@@ -152,6 +159,9 @@ public class KnightheadViewModel : NotificationObject, IDisposable
     }
   }
 
+  /// <summary>
+  /// リソースを解放
+  /// </summary>
   public void Dispose()
   {
     _pdfEditor?.Dispose();

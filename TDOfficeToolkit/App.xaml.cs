@@ -9,6 +9,10 @@ namespace TDOfficeToolkit
   /// </summary>
   public partial class App : Application
   {
+    /// <summary>
+    /// アプリケーション起動時の処理
+    /// </summary>
+    /// <param name="e">起動イベント引数</param>
     protected override void OnStartup(StartupEventArgs e)
     {
       base.OnStartup(e);
@@ -27,11 +31,12 @@ namespace TDOfficeToolkit
     }
 
     /// <summary>
-    /// Knighthead申込書作成ウィンドウを表示
+    /// Knighthead 申込書作成ウィンドウを表示
     /// </summary>
     public static void ShowKnightheadWindow()
     {
-      Current.MainWindow.Hide(); // MainViewを非表示
+      // MainView を非表示
+      Current.MainWindow.Hide();
       
       var knightheadView = new KnightheadView
       {
@@ -39,7 +44,7 @@ namespace TDOfficeToolkit
         WindowStartupLocation = WindowStartupLocation.CenterScreen
       };
       
-      // 閉じられたらMainViewを再表示
+      // 閉じられたら MainView を再表示
       knightheadView.Closed += (s, e) => Current.MainWindow.Show();
       
       knightheadView.ShowDialog();
