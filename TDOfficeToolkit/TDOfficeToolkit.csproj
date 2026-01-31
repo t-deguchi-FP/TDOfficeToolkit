@@ -8,4 +8,10 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="YKToolkit.Controls">
+      <HintPath>..\..\..\YKToolkit\YKToolkit.Controls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
