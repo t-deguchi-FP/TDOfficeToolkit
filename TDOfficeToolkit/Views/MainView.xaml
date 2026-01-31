@@ -15,7 +15,7 @@
       <MenuItem Header="_Exit"/>
     </MenuItem>
     <MenuItem Header="ヘルプ">
-      <MenuItem Header="バージョン情報"/>
+      <MenuItem Header="バージョン情報" Command="{Binding ShowVersionCommand}"/>
     </MenuItem>
   </Menu>
 </YK:Window>

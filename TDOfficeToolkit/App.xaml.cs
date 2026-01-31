@@ -15,5 +15,17 @@ namespace TDOfficeToolkit
 
       new MainView() { DataContext = new MainViewModel() }.Show();
     }
+
+    /// <summary>
+    /// バージョン情報ウィンドウを表示
+    /// </summary>
+    public static void ShowVersionWindow()
+    {
+      var versionView = new VersionView
+      {
+        DataContext = new VersionViewModel()
+      };
+      versionView.ShowDialog();
+    }
   }
 }
