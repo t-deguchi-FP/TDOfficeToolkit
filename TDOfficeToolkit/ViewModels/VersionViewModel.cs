@@ -30,25 +30,33 @@ namespace TDOfficeToolkit.ViewModels
     // Instagram URL
     public string InstagramUrl => "https://www.instagram.com/teruhiko.deguchi/";
 
+    // GitHub URL
+    public string GitHubUrl => "https://github.com/t-deguchi-FP/TDOfficeToolkit";
+
     // 閉じるコマンド
     public DelegateCommand CloseCommand => new DelegateCommand(_ => _closeAction?.Invoke());
 
     // Instagramを開くコマンド
-    public DelegateCommand OpenInstagramCommand => new DelegateCommand(_ =>
+    public DelegateCommand OpenInstagramCommand => new DelegateCommand(_ => OpenUrl(InstagramUrl));
+
+    // GitHubを開くコマンド
+    public DelegateCommand OpenGitHubCommand => new DelegateCommand(_ => OpenUrl(GitHubUrl));
+
+    private void OpenUrl(string url)
     {
       try
       {
         Process.Start(new ProcessStartInfo
         {
-          FileName = InstagramUrl,
+          FileName = url,
           UseShellExecute = true
         });
       }
       catch (Exception ex)
       {
         // エラーハンドリング（必要に応じて）
-        System.Diagnostics.Debug.WriteLine($"Instagram URLを開けませんでした: {ex.Message}");
+        System.Diagnostics.Debug.WriteLine($"URLを開けませんでした: {ex.Message}");
       }
-    });
+    }
   }
 }

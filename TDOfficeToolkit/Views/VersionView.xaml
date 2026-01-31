@@ -7,7 +7,7 @@
            xmlns:local="clr-namespace:TDOfficeToolkit.Views"
            mc:Ignorable="d"
            Title="バージョン情報" 
-           Height="600" 
+           Height="650" 
            Width="450"
            IsClosingConfirmationEnabled="False"
            WindowStartupLocation="CenterScreen"
@@ -194,6 +194,45 @@
                                       Foreground="#333333"/>
                         </StackPanel>
                     </Grid>
+
+                    <!-- GitHub -->
+                    <Button Command="{Binding OpenGitHubCommand}"
+                           Cursor="Hand"
+                           Background="Transparent"
+                           BorderThickness="0"
+                           Padding="0"
+                           HorizontalAlignment="Stretch"
+                           HorizontalContentAlignment="Stretch"
+                           Margin="0,0,0,10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <Border Grid.Column="0" 
+                                   Width="40" Height="40" 
+                                   CornerRadius="10" Margin="0,0,15,0"
+                                   VerticalAlignment="Center"
+                                   Background="#24292e">
+                                <TextBlock Text="🐙" FontSize="20" 
+                                          HorizontalAlignment="Center" 
+                                          VerticalAlignment="Center"/>
+                            </Border>
+                            
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <TextBlock Text="GitHub" 
+                                          FontSize="12" 
+                                          Foreground="#999999"
+                                          Margin="0,0,0,3"/>
+                                <TextBlock Text="t-deguchi-FP/TDOfficeToolkit" 
+                                          FontSize="14" 
+                                          FontWeight="SemiBold"
+                                          Foreground="#333333"
+                                          TextDecorations="Underline"/>
+                            </StackPanel>
+                        </Grid>
+                    </Button>
 
                     <!-- Instagram -->
                     <Button Command="{Binding OpenInstagramCommand}"
