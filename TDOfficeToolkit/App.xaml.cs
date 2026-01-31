@@ -21,10 +21,8 @@ namespace TDOfficeToolkit
     /// </summary>
     public static void ShowVersionWindow()
     {
-      var versionView = new VersionView
-      {
-        DataContext = new VersionViewModel()
-      };
+      var versionView = new VersionView();
+      versionView.DataContext = new VersionViewModel(() => versionView.Close());
       versionView.ShowDialog();
     }
   }

@@ -6,10 +6,261 @@
            xmlns:YK="clr-namespace:YKToolkit.Controls;assembly=YKToolkit.Controls"
            xmlns:local="clr-namespace:TDOfficeToolkit.Views"
            mc:Ignorable="d"
-           Title="バージョン情報" Height="450" Width="800"
+           Title="バージョン情報" 
+           Height="550" 
+           Width="450"
            IsClosingConfirmationEnabled="False"
-           WindowStartupLocation="CenterScreen">
-    <Grid>
+           WindowStartupLocation="CenterScreen"
+           ResizeMode="NoResize">
+    <Window.Resources>
+        <Storyboard x:Key="FadeInAnimation">
+            <DoubleAnimation Storyboard.TargetName="MainGrid" 
+                           Storyboard.TargetProperty="Opacity"
+                           From="0" To="1" Duration="0:0:0.5"/>
+        </Storyboard>
+    </Window.Resources>
+    
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource FadeInAnimation}"/>
+        </EventTrigger>
+    </Window.Triggers>
 
+    <Grid x:Name="MainGrid" Background="#1a1a1a">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- ヘッダーセクション -->
+        <Border Grid.Row="0" CornerRadius="0,0,30,30">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#2d2d2d" Offset="0"/>
+                    <GradientStop Color="#1a1a1a" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Border.Effect>
+                <DropShadowEffect Color="#80000000" BlurRadius="20" 
+                                ShadowDepth="5" Direction="270"/>
+            </Border.Effect>
+            
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <!-- アプリケーションアイコン -->
+                <Ellipse Width="60" Height="60" Margin="0,0,0,10">
+                    <Ellipse.Fill>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#4facfe" Offset="0"/>
+                            <GradientStop Color="#00f2fe" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Ellipse.Fill>
+                    <Ellipse.Effect>
+                        <DropShadowEffect Color="#804facfe" BlurRadius="20" 
+                                        ShadowDepth="0" Direction="270"/>
+                    </Ellipse.Effect>
+                </Ellipse>
+                
+                <!-- アプリケーション名 -->
+                <TextBlock Text="{Binding ApplicationName, FallbackValue='TDOfficeToolkit'}"
+                          FontSize="24" FontWeight="Bold" 
+                          Foreground="White"
+                          HorizontalAlignment="Center"
+                          TextAlignment="Center">
+                    <TextBlock.Effect>
+                        <DropShadowEffect Color="#80000000" BlurRadius="8" 
+                                        ShadowDepth="2" Direction="270"/>
+                    </TextBlock.Effect>
+                </TextBlock>
+            </StackPanel>
+        </Border>
+
+        <!-- 情報セクション -->
+        <StackPanel Grid.Row="1" Margin="40,25,40,15">
+            <!-- バージョン情報カード -->
+            <Border Background="#2d2d2d" CornerRadius="15" Padding="20,18" Margin="0,0,0,12">
+                <Border.Effect>
+                    <DropShadowEffect Color="#60000000" BlurRadius="15" 
+                                    ShadowDepth="3" Direction="270"/>
+                </Border.Effect>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Border Grid.Column="0" 
+                           Width="40" Height="40" 
+                           CornerRadius="10" Margin="0,0,15,0"
+                           VerticalAlignment="Center">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#667eea" Offset="0"/>
+                                <GradientStop Color="#764ba2" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border.Effect>
+                            <DropShadowEffect Color="#80667eea" BlurRadius="10" 
+                                            ShadowDepth="0" Direction="270"/>
+                        </Border.Effect>
+                        <TextBlock Text="📦" FontSize="20" 
+                                  HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center"/>
+                    </Border>
+                    
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                        <TextBlock Text="バージョン" 
+                                  FontSize="12" 
+                                  Foreground="#808080"
+                                  Margin="0,0,0,3"/>
+                        <TextBlock Text="{Binding Version, FallbackValue='1.0.0.0'}" 
+                                  FontSize="18" 
+                                  FontWeight="SemiBold"
+                                  Foreground="#E0E0E0"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- 制作者情報カード -->
+            <Border Background="#2d2d2d" CornerRadius="15" Padding="20,18">
+                <Border.Effect>
+                    <DropShadowEffect Color="#60000000" BlurRadius="15" 
+                                    ShadowDepth="3" Direction="270"/>
+                </Border.Effect>
+                <StackPanel>
+                    <!-- コピーライト -->
+                    <Grid Margin="0,0,0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Border Grid.Column="0" 
+                               Width="40" Height="40" 
+                               CornerRadius="10" Margin="0,0,15,0"
+                               VerticalAlignment="Center">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#f093fb" Offset="0"/>
+                                    <GradientStop Color="#f5576c" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Border.Effect>
+                                <DropShadowEffect Color="#80f093fb" BlurRadius="10" 
+                                                ShadowDepth="0" Direction="270"/>
+                            </Border.Effect>
+                            <TextBlock Text="©" FontSize="20" 
+                                      FontWeight="Bold"
+                                      Foreground="White"
+                                      HorizontalAlignment="Center" 
+                                      VerticalAlignment="Center"/>
+                        </Border>
+                        
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="コピーライト" 
+                                      FontSize="12" 
+                                      Foreground="#808080"
+                                      Margin="0,0,0,3"/>
+                            <TextBlock Text="{Binding Copyright, FallbackValue='© 2026 TDOfficeToolkit'}" 
+                                      FontSize="14" 
+                                      FontWeight="SemiBold"
+                                      Foreground="#E0E0E0"
+                                      TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- 制作者 -->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Border Grid.Column="0" 
+                               Width="40" Height="40" 
+                               CornerRadius="10" Margin="0,0,15,0"
+                               VerticalAlignment="Center">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#4facfe" Offset="0"/>
+                                    <GradientStop Color="#00f2fe" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Border.Effect>
+                                <DropShadowEffect Color="#804facfe" BlurRadius="10" 
+                                                ShadowDepth="0" Direction="270"/>
+                            </Border.Effect>
+                            <TextBlock Text="👤" FontSize="20" 
+                                      HorizontalAlignment="Center" 
+                                      VerticalAlignment="Center"/>
+                        </Border>
+                        
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="制作者" 
+                                      FontSize="12" 
+                                      Foreground="#808080"
+                                      Margin="0,0,0,3"/>
+                            <TextBlock Text="{Binding Developer, FallbackValue='T.Deguchi'}" 
+                                      FontSize="14" 
+                                      FontWeight="SemiBold"
+                                      Foreground="#E0E0E0"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+
+        <!-- フッター（閉じるボタン） -->
+        <Border Grid.Row="2" Padding="30,15">
+            <Button Content="閉じる" 
+                   Height="45"
+                   FontSize="15"
+                   FontWeight="SemiBold"
+                   Cursor="Hand"
+                   Command="{Binding CloseCommand}">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#667eea" Offset="0"/>
+                                    <GradientStop Color="#764ba2" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" 
+                                           CornerRadius="10"
+                                           BorderThickness="0">
+                                        <Border.Effect>
+                                            <DropShadowEffect Color="#40667eea" BlurRadius="15" 
+                                                            ShadowDepth="3" Direction="270"/>
+                                        </Border.Effect>
+                                        <ContentPresenter HorizontalAlignment="Center" 
+                                                        VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background">
+                                                <Setter.Value>
+                                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                        <GradientStop Color="#7a8ff0" Offset="0"/>
+                                                        <GradientStop Color="#865bb0" Offset="1"/>
+                                                    </LinearGradientBrush>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Border>
     </Grid>
 </YK:Window>
