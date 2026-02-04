@@ -7,7 +7,7 @@
            xmlns:YK="clr-namespace:YKToolkit.Controls;assembly=YKToolkit.Controls"
            xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
            mc:Ignorable="d"
-           Title="Knighthead 申込書作成" Height="1000" Width="1600"
+           Title="Knighthead 申込書作成" Height="820" Width="1450"
            IsClosingConfirmationEnabled="False"
            WindowStartupLocation="CenterScreen"
            ResizeMode="CanResize">
