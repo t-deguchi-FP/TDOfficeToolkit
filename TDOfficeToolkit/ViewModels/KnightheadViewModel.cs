@@ -1,10 +1,14 @@
 ﻿using Microsoft.Win32;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using TDOfficeToolkit.Models;
 using YKToolkit.Bindings;
 using YKToolkit.Controls;
+using MessageBox = YKToolkit.Controls.MessageBox;
 
 namespace TDOfficeToolkit.ViewModels;
 
@@ -20,6 +24,7 @@ public class KnightheadViewModel : NotificationObject, IDisposable
   private FundingAccountInfo? _fundingAccount;
   private BeneficiaryInfo? _primaryBeneficiary;
   private ProductSelectionsInfo? _productSelections;
+  private BankInfo? _selectedBank;
 
   /// <summary>
   /// 現在開いている PDF ファイルのパス
@@ -76,6 +81,32 @@ public class KnightheadViewModel : NotificationObject, IDisposable
   }
 
   /// <summary>
+  /// 選択された銀行
+  /// </summary>
+  public BankInfo? SelectedBank
+  {
+    get => _selectedBank;
+    set
+    {
+      if (SetProperty(ref _selectedBank, value) && value != null)
+      {
+        // 銀行情報を資金口座情報に反映
+        FundingAccount.FinancialInstitutionName = value.Name;
+        FundingAccount.Street = value.Street;
+        FundingAccount.City = value.City;
+        FundingAccount.Country = value.Country;
+        FundingAccount.PostalCode = value.PostalCode;
+        FundingAccount.SwiftCode = value.SwiftCode;
+      }
+    }
+  }
+
+  /// <summary>
+  /// 銀行リスト
+  /// </summary>
+  public List<BankInfo> BankList { get; }
+
+  /// <summary>
   /// PDF フィールドのコレクション
   /// </summary>
   public ObservableCollection<PdfFieldInfo> PdfFields { get; } = new();
@@ -106,6 +137,7 @@ public class KnightheadViewModel : NotificationObject, IDisposable
   public KnightheadViewModel()
   {
     _pdfEditor = new PdfFieldEditor();
+    BankList = BankRepository.GetAllBanks();
   }
 
   /// <summary>
@@ -126,13 +158,14 @@ public class KnightheadViewModel : NotificationObject, IDisposable
       FundingAccount = new FundingAccountInfo();
       PrimaryBeneficiary = new BeneficiaryInfo();
       ProductSelections = new ProductSelectionsInfo();
+      SelectedBank = null;
       
       // PDF関連もクリア
       CurrentPdfPath = null;
       PdfSource = null;
       PdfFields.Clear();
       
-      YKToolkit.Controls.MessageBox.Show(
+      MessageBox.Show(
         "新規申込を開始しました",
         "情報",
         MessageBoxButton.OK,
@@ -206,12 +239,18 @@ public class KnightheadViewModel : NotificationObject, IDisposable
         TrustParticipant.BusinessPhone = GetFieldValue(fields, "BusinessPhone");
 
         // 資金口座情報の読み込み
+        var swiftCode = GetFieldValue(fields, "SwiftCode");
+        if (!string.IsNullOrEmpty(swiftCode))
+        {
+          SelectedBank = BankRepository.GetBankBySwiftCode(swiftCode);
+        }
+        
         FundingAccount.FinancialInstitutionName = GetFieldValue(fields, "FinancialInstitutionName");
         FundingAccount.Street = GetFieldValue(fields, "Street");
         FundingAccount.City = GetFieldValue(fields, "FundingCity");
         FundingAccount.Country = GetFieldValue(fields, "FundingCountry");
         FundingAccount.PostalCode = GetFieldValue(fields, "FundingPostalCode");
-        FundingAccount.SwiftCode = GetFieldValue(fields, "SwiftCode");
+        FundingAccount.SwiftCode = swiftCode;
         FundingAccount.ClientAccountNumber = GetFieldValue(fields, "ClientAccountNumber");
 
         // 受益者情報の読み込み
@@ -227,16 +266,15 @@ public class KnightheadViewModel : NotificationObject, IDisposable
         CurrentPdfPath = Path.GetFileName(filePath);
         PdfSource = new Uri(filePath);
 
-        YKToolkit.Controls.MessageBox.Show(
-          "PDF を読み込みました",
-          "情報",
+        MessageBox.Show(
+          "PDFファイルを読み込みました",
+          "成功",
           MessageBoxButton.OK,
           MessageBoxImage.Information);
-
       }
       catch (Exception ex)
       {
-        YKToolkit.Controls.MessageBox.Show(
+        MessageBox.Show(
           $"PDF の読み込みに失敗しました: {ex.Message}",
           "エラー",
           MessageBoxButton.OK,
@@ -248,7 +286,7 @@ public class KnightheadViewModel : NotificationObject, IDisposable
   /// <summary>
   /// フィールド値を取得
   /// </summary>
-  private string GetFieldValue(System.Collections.Generic.Dictionary<string, string> fields, string key)
+  private string GetFieldValue(Dictionary<string, string> fields, string key)
   {
     return fields.TryGetValue(key, out var value) ? value : string.Empty;
   }
@@ -285,7 +323,7 @@ public class KnightheadViewModel : NotificationObject, IDisposable
       }
       catch (Exception ex)
       {
-        YKToolkit.Controls.MessageBox.Show(
+        MessageBox.Show(
           $"PDF の読み込みに失敗しました: {ex.Message}",
           "エラー",
           MessageBoxButton.OK,
@@ -311,7 +349,7 @@ public class KnightheadViewModel : NotificationObject, IDisposable
       try
       {
         // フィールド値を更新
-        var fieldValues = new System.Collections.Generic.Dictionary<string, string>();
+        var fieldValues = new Dictionary<string, string>();
         foreach (var field in PdfFields)
         {
           fieldValues[field.Name] = field.Value;
@@ -321,7 +359,7 @@ public class KnightheadViewModel : NotificationObject, IDisposable
         // 保存
         _pdfEditor.SavePdf(dialog.FileName);
 
-        YKToolkit.Controls.MessageBox.Show(
+        MessageBox.Show(
           "PDF を保存しました",
           "成功",
           MessageBoxButton.OK,
@@ -329,7 +367,7 @@ public class KnightheadViewModel : NotificationObject, IDisposable
       }
       catch (Exception ex)
       {
-        YKToolkit.Controls.MessageBox.Show(
+        MessageBox.Show(
           $"PDF の保存に失敗しました: {ex.Message}",
           "エラー",
           MessageBoxButton.OK,

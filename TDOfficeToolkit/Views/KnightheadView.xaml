@@ -162,11 +162,26 @@
               <StackPanel>
                 <TextBlock Text="資金口座" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
 
+                <TextBlock Text="金融機関を選択" Margin="0,0,0,5"/>
+                <ComboBox ItemsSource="{Binding BankList}"
+                          SelectedItem="{Binding SelectedBank}"
+                          DisplayMemberPath="DisplayName"
+                          Margin="0,0,0,10"
+                          Padding="5"/>
+
                 <TextBlock Text="金融機関名" Margin="0,0,0,5"/>
-                <TextBox Text="{Binding FundingAccount.FinancialInstitutionName, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5"/>
+                <TextBox Text="{Binding FundingAccount.FinancialInstitutionName, UpdateSourceTrigger=PropertyChanged}" 
+                         Margin="0,0,0,10" 
+                         Padding="5"
+                         IsReadOnly="True"
+                         Background="LightGray"/>
 
                 <TextBlock Text="住所（番地）" Margin="0,0,0,5"/>
-                <TextBox Text="{Binding FundingAccount.Street, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5"/>
+                <TextBox Text="{Binding FundingAccount.Street, UpdateSourceTrigger=PropertyChanged}" 
+                         Margin="0,0,0,10" 
+                         Padding="5"
+                         IsReadOnly="True"
+                         Background="LightGray"/>
 
                 <Grid>
                   <Grid.ColumnDefinitions>
@@ -177,12 +192,20 @@
 
                   <StackPanel Grid.Column="0">
                     <TextBlock Text="市区町村" Margin="0,0,0,5"/>
-                    <TextBox Text="{Binding FundingAccount.City, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5"/>
+                    <TextBox Text="{Binding FundingAccount.City, UpdateSourceTrigger=PropertyChanged}" 
+                             Margin="0,0,0,10" 
+                             Padding="5"
+                             IsReadOnly="True"
+                             Background="LightGray"/>
                   </StackPanel>
 
                   <StackPanel Grid.Column="2">
                     <TextBlock Text="国" Margin="0,0,0,5"/>
-                    <TextBox Text="{Binding FundingAccount.Country, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5"/>
+                    <TextBox Text="{Binding FundingAccount.Country, UpdateSourceTrigger=PropertyChanged}" 
+                             Margin="0,0,0,10" 
+                             Padding="5"
+                             IsReadOnly="True"
+                             Background="LightGray"/>
                   </StackPanel>
                 </Grid>
 
@@ -195,17 +218,26 @@
 
                   <StackPanel Grid.Column="0">
                     <TextBlock Text="郵便番号" Margin="0,0,0,5"/>
-                    <TextBox Text="{Binding FundingAccount.PostalCode, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5"/>
+                    <TextBox Text="{Binding FundingAccount.PostalCode, UpdateSourceTrigger=PropertyChanged}" 
+                             Margin="0,0,0,10" 
+                             Padding="5"
+                             IsReadOnly="True"
+                             Background="LightGray"/>
                   </StackPanel>
 
                   <StackPanel Grid.Column="2">
                     <TextBlock Text="SWIFTコード" Margin="0,0,0,5"/>
-                    <TextBox Text="{Binding FundingAccount.SwiftCode, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5"/>
+                    <TextBox Text="{Binding FundingAccount.SwiftCode, UpdateSourceTrigger=PropertyChanged}" 
+                             Margin="0,0,0,10" 
+                             Padding="5"
+                             IsReadOnly="True"
+                             Background="LightGray"/>
                   </StackPanel>
                 </Grid>
 
                 <TextBlock Text="口座番号" Margin="0,0,0,5"/>
-                <TextBox Text="{Binding FundingAccount.ClientAccountNumber, UpdateSourceTrigger=PropertyChanged}" Padding="5"/>
+                <TextBox Text="{Binding FundingAccount.ClientAccountNumber, UpdateSourceTrigger=PropertyChanged}" 
+                         Padding="5"/>
               </StackPanel>
             </Border>
 
