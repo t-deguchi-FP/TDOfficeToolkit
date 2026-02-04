@@ -7,7 +7,7 @@
            xmlns:YK="clr-namespace:YKToolkit.Controls;assembly=YKToolkit.Controls"
            xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
            mc:Ignorable="d"
-           Title="Knighthead 申込書作成" Height="820" Width="1450"
+           Title="Knighthead 申込書作成" Height="1000" Width="1600"
            IsClosingConfirmationEnabled="False"
            WindowStartupLocation="CenterScreen"
            ResizeMode="CanResize">
@@ -23,10 +23,10 @@
       <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
         <StackPanel>
           
-          <!-- Trust Participant セクション -->
+          <!-- 信託参加者 セクション -->
           <Border Padding="15" Margin="0,0,0,15">
             <StackPanel>
-              <TextBlock Text="Trust Participant" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+              <TextBlock Text="信託参加者" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
               
               <Grid>
                 <Grid.ColumnDefinitions>
@@ -51,60 +51,60 @@
                   <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <!-- LastName -->
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="Last Name" Margin="0,0,0,5"/>
+                <!-- 姓 -->
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="姓" Margin="0,0,0,5"/>
                 <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding TrustParticipant.LastName, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5"/>
 
-                <!-- FirstName -->
-                <TextBlock Grid.Row="0" Grid.Column="2" Text="First Name" Margin="0,0,0,5"/>
+                <!-- 名 -->
+                <TextBlock Grid.Row="0" Grid.Column="2" Text="名" Margin="0,0,0,5"/>
                 <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding TrustParticipant.FirstName, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5"/>
 
-                <!-- Address -->
-                <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Text="Address" Margin="0,0,0,5"/>
+                <!-- 住所 -->
+                <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Text="住所" Margin="0,0,0,5"/>
                 <TextBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding TrustParticipant.Address, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5"/>
 
-                <!-- City -->
-                <TextBlock Grid.Row="4" Grid.Column="0" Text="City" Margin="0,0,0,5"/>
+                <!-- 市区町村 -->
+                <TextBlock Grid.Row="4" Grid.Column="0" Text="市区町村" Margin="0,0,0,5"/>
                 <TextBox Grid.Row="5" Grid.Column="0" Text="{Binding TrustParticipant.City, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5"/>
 
-                <!-- Country -->
-                <TextBlock Grid.Row="4" Grid.Column="2" Text="Country" Margin="0,0,0,5"/>
+                <!-- 国 -->
+                <TextBlock Grid.Row="4" Grid.Column="2" Text="国" Margin="0,0,0,5"/>
                 <TextBox Grid.Row="5" Grid.Column="2" Text="{Binding TrustParticipant.Country, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5"/>
 
-                <!-- PostalCode -->
-                <TextBlock Grid.Row="6" Grid.Column="0" Text="Postal Code" Margin="0,0,0,5"/>
+                <!-- 郵便番号 -->
+                <TextBlock Grid.Row="6" Grid.Column="0" Text="郵便番号" Margin="0,0,0,5"/>
                 <TextBox Grid.Row="7" Grid.Column="0" Text="{Binding TrustParticipant.PostalCode, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5"/>
 
-                <!-- Gender -->
-                <TextBlock Grid.Row="6" Grid.Column="2" Text="Gender" Margin="0,0,0,5"/>
+                <!-- 性別 -->
+                <TextBlock Grid.Row="6" Grid.Column="2" Text="性別" Margin="0,0,0,5"/>
                 <ComboBox Grid.Row="7" Grid.Column="2" SelectedItem="{Binding TrustParticipant.Gender}" Margin="0,0,0,10" Padding="5">
-                  <ComboBoxItem Content="Male"/>
-                  <ComboBoxItem Content="Female"/>
-                  <ComboBoxItem Content="Other"/>
+                  <ComboBoxItem Content="男性"/>
+                  <ComboBoxItem Content="女性"/>
+                  <ComboBoxItem Content="その他"/>
                 </ComboBox>
 
-                <!-- Phone -->
-                <TextBlock Grid.Row="8" Grid.Column="0" Text="Phone" Margin="0,0,0,5"/>
+                <!-- 電話番号 -->
+                <TextBlock Grid.Row="8" Grid.Column="0" Text="電話番号" Margin="0,0,0,5"/>
                 <TextBox Grid.Row="9" Grid.Column="0" Text="{Binding TrustParticipant.Phone, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5"/>
 
-                <!-- Email -->
-                <TextBlock Grid.Row="8" Grid.Column="2" Text="Email" Margin="0,0,0,5"/>
+                <!-- メールアドレス -->
+                <TextBlock Grid.Row="8" Grid.Column="2" Text="メールアドレス" Margin="0,0,0,5"/>
                 <TextBox Grid.Row="9" Grid.Column="2" Text="{Binding TrustParticipant.Email, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5"/>
 
-                <!-- TaxIdentificationNumber -->
-                <TextBlock Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3" Text="Tax Identification Number" Margin="0,0,0,5"/>
+                <!-- 納税者番号 -->
+                <TextBlock Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3" Text="納税者番号" Margin="0,0,0,5"/>
                 <TextBox Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding TrustParticipant.TaxIdentificationNumber, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5"/>
 
-                <!-- DateOfIssue -->
-                <TextBlock Grid.Row="12" Grid.Column="0" Text="Date of Issue" Margin="0,0,0,5"/>
+                <!-- 発行日 -->
+                <TextBlock Grid.Row="12" Grid.Column="0" Text="発行日" Margin="0,0,0,5"/>
                 <DatePicker Grid.Row="13" Grid.Column="0" SelectedDate="{Binding TrustParticipant.DateOfIssue}" Margin="0,0,0,10" Padding="5"/>
 
-                <!-- ExpirationDate -->
-                <TextBlock Grid.Row="12" Grid.Column="2" Text="Expiration Date" Margin="0,0,0,5"/>
+                <!-- 有効期限 -->
+                <TextBlock Grid.Row="12" Grid.Column="2" Text="有効期限" Margin="0,0,0,5"/>
                 <DatePicker Grid.Row="13" Grid.Column="2" SelectedDate="{Binding TrustParticipant.ExpirationDate}" Margin="0,0,0,10" Padding="5"/>
               </Grid>
               
-              <TextBlock Text="Name of Employer" Margin="0,0,0,5"/>
+              <TextBlock Text="雇用主名" Margin="0,0,0,5"/>
               <TextBox Text="{Binding TrustParticipant.NameOfEmployer, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5"/>
 
               <Grid>
@@ -114,30 +114,30 @@
                   <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <!-- Position -->
+                <!-- 役職 -->
                 <StackPanel Grid.Column="0">
-                  <TextBlock Text="Position" Margin="0,0,0,5"/>
+                  <TextBlock Text="役職" Margin="0,0,0,5"/>
                   <TextBox Text="{Binding TrustParticipant.Position, UpdateSourceTrigger=PropertyChanged}" Padding="5"/>
                 </StackPanel>
 
-                <!-- BusinessPhone -->
+                <!-- 勤務先電話番号 -->
                 <StackPanel Grid.Column="2">
-                  <TextBlock Text="Business Phone" Margin="0,0,0,5"/>
+                  <TextBlock Text="勤務先電話番号" Margin="0,0,0,5"/>
                   <TextBox Text="{Binding TrustParticipant.BusinessPhone, UpdateSourceTrigger=PropertyChanged}" Padding="5"/>
                 </StackPanel>
               </Grid>
             </StackPanel>
           </Border>
 
-          <!-- Funding Account セクション -->
+          <!-- 資金口座 セクション -->
           <Border Padding="15" Margin="0,0,0,15">
             <StackPanel>
-              <TextBlock Text="Funding Account" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+              <TextBlock Text="資金口座" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
 
-              <TextBlock Text="Financial Institution Name" Margin="0,0,0,5"/>
+              <TextBlock Text="金融機関名" Margin="0,0,0,5"/>
               <TextBox Text="{Binding FundingAccount.FinancialInstitutionName, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5"/>
 
-              <TextBlock Text="Street" Margin="0,0,0,5"/>
+              <TextBlock Text="住所（番地）" Margin="0,0,0,5"/>
               <TextBox Text="{Binding FundingAccount.Street, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5"/>
 
               <Grid>
@@ -148,12 +148,12 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0">
-                  <TextBlock Text="City" Margin="0,0,0,5"/>
+                  <TextBlock Text="市区町村" Margin="0,0,0,5"/>
                   <TextBox Text="{Binding FundingAccount.City, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="2">
-                  <TextBlock Text="Country" Margin="0,0,0,5"/>
+                  <TextBlock Text="国" Margin="0,0,0,5"/>
                   <TextBox Text="{Binding FundingAccount.Country, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5"/>
                 </StackPanel>
               </Grid>
@@ -166,25 +166,25 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0">
-                  <TextBlock Text="Postal Code" Margin="0,0,0,5"/>
+                  <TextBlock Text="郵便番号" Margin="0,0,0,5"/>
                   <TextBox Text="{Binding FundingAccount.PostalCode, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="2">
-                  <TextBlock Text="Swift Code" Margin="0,0,0,5"/>
+                  <TextBlock Text="SWIFTコード" Margin="0,0,0,5"/>
                   <TextBox Text="{Binding FundingAccount.SwiftCode, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5"/>
                 </StackPanel>
               </Grid>
 
-              <TextBlock Text="Client Account Number" Margin="0,0,0,5"/>
+              <TextBlock Text="口座番号" Margin="0,0,0,5"/>
               <TextBox Text="{Binding FundingAccount.ClientAccountNumber, UpdateSourceTrigger=PropertyChanged}" Padding="5"/>
             </StackPanel>
           </Border>
 
-          <!-- Primary Beneficiary セクション -->
+          <!-- 受益者 セクション -->
           <Border Padding="15" Margin="0,0,0,15">
             <StackPanel>
-              <TextBlock Text="Primary Beneficiary" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+              <TextBlock Text="受益者" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
 
               <Grid>
                 <Grid.ColumnDefinitions>
@@ -194,12 +194,12 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0">
-                  <TextBlock Text="Last Name" Margin="0,0,0,5"/>
+                  <TextBlock Text="姓" Margin="0,0,0,5"/>
                   <TextBox Text="{Binding PrimaryBeneficiary.LastName, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="2">
-                  <TextBlock Text="First Name" Margin="0,0,0,5"/>
+                  <TextBlock Text="名" Margin="0,0,0,5"/>
                   <TextBox Text="{Binding PrimaryBeneficiary.FirstName, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5"/>
                 </StackPanel>
               </Grid>
@@ -212,22 +212,22 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0">
-                  <TextBlock Text="Date of Birth" Margin="0,0,0,5"/>
+                  <TextBlock Text="生年月日" Margin="0,0,0,5"/>
                   <DatePicker SelectedDate="{Binding PrimaryBeneficiary.DateOfBirth}" Padding="5"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="2">
-                  <TextBlock Text="Relationship" Margin="0,0,0,5"/>
+                  <TextBlock Text="続柄" Margin="0,0,0,5"/>
                   <TextBox Text="{Binding PrimaryBeneficiary.Relationship, UpdateSourceTrigger=PropertyChanged}" Padding="5"/>
                 </StackPanel>
               </Grid>
             </StackPanel>
           </Border>
 
-          <!-- Product Selections セクション -->
+          <!-- 商品選択 セクション -->
           <Border Padding="15" Margin="0,0,0,15">
             <StackPanel>
-              <TextBlock Text="Product Selections" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+              <TextBlock Text="商品選択" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
 
               <Grid>
                 <Grid.ColumnDefinitions>
@@ -237,12 +237,12 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0">
-                  <TextBlock Text="Number of Years" Margin="0,0,0,5"/>
+                  <TextBlock Text="年数" Margin="0,0,0,5"/>
                   <TextBox Text="{Binding ProductSelections.NumberOfYears, UpdateSourceTrigger=PropertyChanged}" Padding="5"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="2">
-                  <TextBlock Text="Amount ($)" Margin="0,0,0,5"/>
+                  <TextBlock Text="金額（$）" Margin="0,0,0,5"/>
                   <TextBox Text="{Binding ProductSelections.Amount, UpdateSourceTrigger=PropertyChanged}" Padding="5"/>
                 </StackPanel>
               </Grid>
