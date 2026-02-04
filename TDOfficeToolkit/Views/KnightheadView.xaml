@@ -173,15 +173,13 @@
                 <TextBox Text="{Binding FundingAccount.FinancialInstitutionName, UpdateSourceTrigger=PropertyChanged}" 
                          Margin="0,0,0,10" 
                          Padding="5"
-                         IsReadOnly="True"
-                         Background="LightGray"/>
+                         IsReadOnly="True"/>
 
                 <TextBlock Text="住所（番地）" Margin="0,0,0,5"/>
                 <TextBox Text="{Binding FundingAccount.Street, UpdateSourceTrigger=PropertyChanged}" 
                          Margin="0,0,0,10" 
                          Padding="5"
-                         IsReadOnly="True"
-                         Background="LightGray"/>
+                         IsReadOnly="True"/>
 
                 <Grid>
                   <Grid.ColumnDefinitions>
@@ -195,8 +193,7 @@
                     <TextBox Text="{Binding FundingAccount.City, UpdateSourceTrigger=PropertyChanged}" 
                              Margin="0,0,0,10" 
                              Padding="5"
-                             IsReadOnly="True"
-                             Background="LightGray"/>
+                             IsReadOnly="True"/>
                   </StackPanel>
 
                   <StackPanel Grid.Column="2">
@@ -204,8 +201,7 @@
                     <TextBox Text="{Binding FundingAccount.Country, UpdateSourceTrigger=PropertyChanged}" 
                              Margin="0,0,0,10" 
                              Padding="5"
-                             IsReadOnly="True"
-                             Background="LightGray"/>
+                             IsReadOnly="True"/>
                   </StackPanel>
                 </Grid>
 
@@ -221,8 +217,7 @@
                     <TextBox Text="{Binding FundingAccount.PostalCode, UpdateSourceTrigger=PropertyChanged}" 
                              Margin="0,0,0,10" 
                              Padding="5"
-                             IsReadOnly="True"
-                             Background="LightGray"/>
+                             IsReadOnly="True"/>
                   </StackPanel>
 
                   <StackPanel Grid.Column="2">
@@ -230,8 +225,7 @@
                     <TextBox Text="{Binding FundingAccount.SwiftCode, UpdateSourceTrigger=PropertyChanged}" 
                              Margin="0,0,0,10" 
                              Padding="5"
-                             IsReadOnly="True"
-                             Background="LightGray"/>
+                             IsReadOnly="True"/>
                   </StackPanel>
                 </Grid>
 
