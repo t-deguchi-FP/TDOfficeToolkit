@@ -11,12 +11,12 @@ public class BankInfo
   public string Name { get; set; } = string.Empty;
 
   /// <summary>
-  /// 住所（番地）
+  /// 住所（番地・市区町村）
   /// </summary>
   public string Street { get; set; } = string.Empty;
 
   /// <summary>
-  /// 市区町村
+  /// 県
   /// </summary>
   public string City { get; set; } = string.Empty;
 

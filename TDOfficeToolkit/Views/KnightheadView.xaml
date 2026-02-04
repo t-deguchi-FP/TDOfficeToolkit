@@ -91,8 +91,8 @@
                   <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Text="住所" Margin="0,0,0,5"/>
                   <TextBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding TrustParticipant.Address, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5"/>
 
-                  <!-- 市区町村 -->
-                  <TextBlock Grid.Row="4" Grid.Column="0" Text="市区町村" Margin="0,0,0,5"/>
+                  <!-- 県 -->
+                  <TextBlock Grid.Row="4" Grid.Column="0" Text="県" Margin="0,0,0,5"/>
                   <TextBox Grid.Row="5" Grid.Column="0" Text="{Binding TrustParticipant.City, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5"/>
 
                   <!-- 国 -->
@@ -175,7 +175,7 @@
                          Padding="5"
                          IsReadOnly="True"/>
 
-                <TextBlock Text="住所（番地）" Margin="0,0,0,5"/>
+                <TextBlock Text="住所（番地・市区町村）" Margin="0,0,0,5"/>
                 <TextBox Text="{Binding FundingAccount.Street, UpdateSourceTrigger=PropertyChanged}" 
                          Margin="0,0,0,10" 
                          Padding="5"
@@ -189,7 +189,7 @@
                   </Grid.ColumnDefinitions>
 
                   <StackPanel Grid.Column="0">
-                    <TextBlock Text="市区町村" Margin="0,0,0,5"/>
+                    <TextBlock Text="県" Margin="0,0,0,5"/>
                     <TextBox Text="{Binding FundingAccount.City, UpdateSourceTrigger=PropertyChanged}" 
                              Margin="0,0,0,10" 
                              Padding="5"

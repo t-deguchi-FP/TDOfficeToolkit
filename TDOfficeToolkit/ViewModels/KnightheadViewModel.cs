@@ -222,7 +222,7 @@ public class KnightheadViewModel : NotificationObject, IDisposable
 
         // フィールド情報を取得して入力フォームに反映
         var fields = _pdfEditor.GetAllFields();
-        
+
         // 信託参加者情報の読み込み
         TrustParticipant.LastName = GetFieldValue(fields, "LastName");
         TrustParticipant.FirstName = GetFieldValue(fields, "FirstName");
@@ -244,7 +244,7 @@ public class KnightheadViewModel : NotificationObject, IDisposable
         {
           SelectedBank = BankRepository.GetBankBySwiftCode(swiftCode);
         }
-        
+
         FundingAccount.FinancialInstitutionName = GetFieldValue(fields, "FinancialInstitutionName");
         FundingAccount.Street = GetFieldValue(fields, "Street");
         FundingAccount.City = GetFieldValue(fields, "FundingCity");
@@ -252,7 +252,7 @@ public class KnightheadViewModel : NotificationObject, IDisposable
         FundingAccount.PostalCode = GetFieldValue(fields, "FundingPostalCode");
         FundingAccount.SwiftCode = swiftCode;
         FundingAccount.ClientAccountNumber = GetFieldValue(fields, "ClientAccountNumber");
-
+        
         // 受益者情報の読み込み
         PrimaryBeneficiary.LastName = GetFieldValue(fields, "BeneficiaryLastName");
         PrimaryBeneficiary.FirstName = GetFieldValue(fields, "BeneficiaryFirstName");

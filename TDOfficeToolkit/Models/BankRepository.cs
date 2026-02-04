@@ -13,8 +13,8 @@ public class BankRepository
     new BankInfo
     {
       Name = "三菱UFJ銀行",
-      Street = "2-7-1 Marunouchi",
-      City = "Chiyoda-ku, Tokyo",
+      Street = "2-7-1 Marunouchi, Chiyoda-ku",
+      City = "Tokyo",
       Country = "Japan",
       PostalCode = "100-8388",
       SwiftCode = "BOTKJPJT"
@@ -22,8 +22,8 @@ public class BankRepository
     new BankInfo
     {
       Name = "三井住友銀行",
-      Street = "1-1-2 Marunouchi",
-      City = "Chiyoda-ku, Tokyo",
+      Street = "1-1-2 Marunouchi, Chiyoda-ku",
+      City = "Tokyo",
       Country = "Japan",
       PostalCode = "100-0005",
       SwiftCode = "SMBCJPJT"
@@ -31,8 +31,8 @@ public class BankRepository
     new BankInfo
     {
       Name = "みずほ銀行",
-      Street = "1-5-5 Otemachi",
-      City = "Chiyoda-ku, Tokyo",
+      Street = "1-5-5 Otemachi, Chiyoda-ku",
+      City = "Tokyo",
       Country = "Japan",
       PostalCode = "100-8176",
       SwiftCode = "MHCBJPJT"
@@ -40,8 +40,8 @@ public class BankRepository
     new BankInfo
     {
       Name = "りそな銀行",
-      Street = "5-5 Odori Nishi",
-      City = "Chuo-ku, Osaka",
+      Street = "5-5 Odori Nishi, Chuo-ku",
+      City = "Osaka",
       Country = "Japan",
       PostalCode = "540-8610",
       SwiftCode = "DIWAJPJT"
@@ -49,8 +49,8 @@ public class BankRepository
     new BankInfo
     {
       Name = "ゆうちょ銀行",
-      Street = "1-3-2 Kasumigaseki",
-      City = "Chiyoda-ku, Tokyo",
+      Street = "1-3-2 Kasumigaseki, Chiyoda-ku",
+      City = "Tokyo",
       Country = "Japan",
       PostalCode = "100-8798",
       SwiftCode = "JURUJPJZ"
@@ -58,8 +58,8 @@ public class BankRepository
     new BankInfo
     {
       Name = "JPMorgan Chase Bank",
-      Street = "383 Madison Avenue",
-      City = "New York, NY",
+      Street = "383 Madison Avenue, New York",
+      City = "New York",
       Country = "United States",
       PostalCode = "10179",
       SwiftCode = "CHASUS33"
@@ -67,8 +67,8 @@ public class BankRepository
     new BankInfo
     {
       Name = "Bank of America",
-      Street = "100 North Tryon Street",
-      City = "Charlotte, NC",
+      Street = "100 North Tryon Street, Charlotte",
+      City = "North Carolina",
       Country = "United States",
       PostalCode = "28255",
       SwiftCode = "BOFAUS3N"
@@ -76,8 +76,8 @@ public class BankRepository
     new BankInfo
     {
       Name = "Citibank",
-      Street = "388 Greenwich Street",
-      City = "New York, NY",
+      Street = "388 Greenwich Street, New York",
+      City = "New York",
       Country = "United States",
       PostalCode = "10013",
       SwiftCode = "CITIUS33"
@@ -85,7 +85,7 @@ public class BankRepository
     new BankInfo
     {
       Name = "HSBC Bank",
-      Street = "8 Canada Square",
+      Street = "8 Canada Square, London",
       City = "London",
       Country = "United Kingdom",
       PostalCode = "E14 5HQ",
@@ -94,7 +94,7 @@ public class BankRepository
     new BankInfo
     {
       Name = "UBS Switzerland",
-      Street = "Bahnhofstrasse 45",
+      Street = "Bahnhofstrasse 45, Zurich",
       City = "Zurich",
       Country = "Switzerland",
       PostalCode = "8001",
