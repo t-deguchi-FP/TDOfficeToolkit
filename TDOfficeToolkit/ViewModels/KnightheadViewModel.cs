@@ -1,9 +1,10 @@
 ﻿using Microsoft.Win32;
-using System;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Windows;
 using TDOfficeToolkit.Models;
 using YKToolkit.Bindings;
+using YKToolkit.Controls;
 
 namespace TDOfficeToolkit.ViewModels;
 
@@ -112,13 +113,13 @@ public class KnightheadViewModel : NotificationObject, IDisposable
   /// </summary>
   private void NewApplication()
   {
-    var result = System.Windows.MessageBox.Show(
+    var result = YKToolkit.Controls.MessageBox.Show(
       "新規申込を開始します。入力中のデータはクリアされますがよろしいですか?",
       "確認",
-      System.Windows.MessageBoxButton.YesNo,
-      System.Windows.MessageBoxImage.Question);
+      MessageBoxButton.YesNo,
+      MessageBoxImage.Question);
 
-    if (result == System.Windows.MessageBoxResult.Yes)
+    if (result == MessageBoxResult.Yes)
     {
       // すべての入力フィールドをクリア
       TrustParticipant = new TrustParticipantInfo();
@@ -131,11 +132,11 @@ public class KnightheadViewModel : NotificationObject, IDisposable
       PdfSource = null;
       PdfFields.Clear();
       
-      System.Windows.MessageBox.Show(
+      YKToolkit.Controls.MessageBox.Show(
         "新規申込を開始しました",
         "情報",
-        System.Windows.MessageBoxButton.OK,
-        System.Windows.MessageBoxImage.Information);
+        MessageBoxButton.OK,
+        MessageBoxImage.Information);
     }
   }
 
@@ -226,19 +227,20 @@ public class KnightheadViewModel : NotificationObject, IDisposable
         CurrentPdfPath = Path.GetFileName(filePath);
         PdfSource = new Uri(filePath);
 
-        System.Windows.MessageBox.Show(
-          "PDFファイルを読み込みました",
-          "成功",
-          System.Windows.MessageBoxButton.OK,
-          System.Windows.MessageBoxImage.Information);
+        YKToolkit.Controls.MessageBox.Show(
+          "PDF を読み込みました",
+          "情報",
+          MessageBoxButton.OK,
+          MessageBoxImage.Information);
+
       }
       catch (Exception ex)
       {
-        System.Windows.MessageBox.Show(
+        YKToolkit.Controls.MessageBox.Show(
           $"PDF の読み込みに失敗しました: {ex.Message}",
           "エラー",
-          System.Windows.MessageBoxButton.OK,
-          System.Windows.MessageBoxImage.Error);
+          MessageBoxButton.OK,
+          MessageBoxImage.Error);
       }
     }
   }
@@ -283,11 +285,11 @@ public class KnightheadViewModel : NotificationObject, IDisposable
       }
       catch (Exception ex)
       {
-        System.Windows.MessageBox.Show(
+        YKToolkit.Controls.MessageBox.Show(
           $"PDF の読み込みに失敗しました: {ex.Message}",
           "エラー",
-          System.Windows.MessageBoxButton.OK,
-          System.Windows.MessageBoxImage.Error);
+          MessageBoxButton.OK,
+          MessageBoxImage.Error);
       }
     }
   }
@@ -319,19 +321,19 @@ public class KnightheadViewModel : NotificationObject, IDisposable
         // 保存
         _pdfEditor.SavePdf(dialog.FileName);
 
-        System.Windows.MessageBox.Show(
+        YKToolkit.Controls.MessageBox.Show(
           "PDF を保存しました",
           "成功",
-          System.Windows.MessageBoxButton.OK,
-          System.Windows.MessageBoxImage.Information);
+          MessageBoxButton.OK,
+          MessageBoxImage.Information);
       }
       catch (Exception ex)
       {
-        System.Windows.MessageBox.Show(
+        YKToolkit.Controls.MessageBox.Show(
           $"PDF の保存に失敗しました: {ex.Message}",
           "エラー",
-          System.Windows.MessageBoxButton.OK,
-          System.Windows.MessageBoxImage.Error);
+          MessageBoxButton.OK,
+          MessageBoxImage.Error);
       }
     }
   }
