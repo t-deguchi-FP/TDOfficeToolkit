@@ -7,12 +7,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Reference Include="YKToolkit.Controls">
-      <HintPath>..\..\..\YKToolkit\YKToolkit.Controls.dll</HintPath>
-    </Reference>
-  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\**\*" />
   </ItemGroup>
@@ -20,5 +14,11 @@
     <PackageReference Include="itext" Version="9.5.0" />
     <PackageReference Include="itext.bouncy-castle-adapter" Version="9.5.0" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3719.77" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="YKToolkit.Controls">
+      <HintPath>..\..\YKToolkit\YKToolkit.Controls.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>
